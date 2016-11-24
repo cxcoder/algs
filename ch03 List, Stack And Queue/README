@@ -1,9 +1,50 @@
 Exercises
 
+3.1 You are given a list, L, and another list, P, containing integers sorted in ascending
+order. The operation printLots(L,P) will print the elements in L that are in positions
+speciﬁed by P. For instance, if P = 1, 3, 4, 6, the elements in positions 1, 3, 4, and 6
+in L are printed. Write the procedure printLots(L,P). You may use only the public
+Collections API container operations. What is the running time of your procedure?
+
+
+
+3.2 Swap two adjacent elements by adjusting only the links (and not the data) using:
+a. Singly linked lists.
+b. Doubly linked lists.
+
+
+3.3 Implement the contains routine for MyLinkedList.
 
 
 
 
+3.4 Given two sorted lists, L1 and L2, write a procedure to compute L1 ∩ L2 using only
+the basic list operations.
 
 
 
+3.5 Given two sorted lists, L1 and L2, write a procedure to compute L1 ∪ L2 using only
+the basic list operations.
+
+
+3.6 The Josephus problem is the following game: N people, numbered 1 to N, are sitting
+in a circle. Starting at person 1, a hot potato is passed. After M passes, the person
+holding the hot potato is eliminated, the circle closes ranks, and the game continues
+with the person who was sitting after the eliminated person picking up the hot
+potato. The last remaining person wins. Thus, if M = 0 and N = 5, players are
+eliminated in order, and player 5 wins. If M = 1 and N = 5, the order of elimination
+is 2, 4, 1, 5.
+a. Write a program to solve the Josephus problem for general values of M and N.
+Try to make your program as efﬁcient as possible. Make sure you dispose of
+cells.
+b. What is the running time of your program?
+
+
+3.7 What is the running time of the following code?
+public static List<Integer> makeList( int N ) {
+    ArrayList<Integer> lst = new ArrayList<>( );
+    for( int i = 0; i < N; i++ ) {
+        lst.add( i );
+        lst.trimToSize( );
+    }
+}
