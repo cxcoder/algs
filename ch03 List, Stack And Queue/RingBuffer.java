@@ -11,7 +11,6 @@ public class RingBuffer {
     private int tail;
     private int lost;
     private String[] items;
-    private int size;
     private int capacity;
     public RingBuffer(int size) {
         items = new String[size];
@@ -20,25 +19,22 @@ public class RingBuffer {
     public int getLost() {
         return lost;
     }
-    public int size() {
-        return size;
-    }
     public void put(String st) {
-        int next = head + 1;
-        if (next >= capacity) {
-            next = 0;
-        }
-        if (next == tail) {
+        if ((tail+1)%capacity == head) {
             lost++;
             print();
             return;
         }
-        items[next] = st;
-        head = next;
+        items[tail] = st;
+        tail = (tail + 1) % capacity;
         print();
     }
     public String take() {
-        return null;
+        if(head == tail) return null;
+        String st = items[head];
+        items[head] = null;
+        head = (head + 1) % capacity;
+        return st;
     }
     public void print() {
         System.out.println(Arrays.toString(items) + ", head=" + head + ", tail=" + tail + ", lost=" + lost);
@@ -50,5 +46,11 @@ public class RingBuffer {
         rb.put("3");
         rb.put("4");
         rb.put("5");
+        System.out.println("============================");
+        String st = null;
+        while ((st = rb.take()) != null) {
+            System.out.print("take " + st + ", ");
+            rb.print();
+        }
     }
 }
