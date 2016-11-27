@@ -6,7 +6,7 @@
  */
 import java.util.Arrays;
 public class RingBuffer {
-    // Thread Unsafe 
+    // Not Thread Safe 
     private int head;
     private int tail;
     private int lost;
