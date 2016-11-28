@@ -6,16 +6,55 @@ speciﬁed by P. For instance, if P = 1, 3, 4, 6, the elements in positions 1, 3
 in L are printed. Write the procedure printLots(L,P). You may use only the public
 Collections API container operations. What is the running time of your procedure?
 
+JDK 里遍历集合都是通过 Itreator 工具，这里认为编号是从 0 开始的
+public void printLots(List L, List P) {
+    Iterator litr = L.iterator();
+    iterator pitr = L.iterator();
+    int index = 0;
+    int ele = 0;
+    while (pitr.hasNext()) {
+       int position = pitr.next();
+       while(litr.hasNext()){
+           if(index == position) {
+               ele = litr.next();
+               System.out.println(ele);
+           }
+       }
+    }
+}
 
 
 3.2 Swap two adjacent elements by adjusting only the links (and not the data) using:
+假设给的结点前驱后继均不为空
 a. Singly linked lists.
-b. Doubly linked lists.
+单链表给出结点 p 的前驱结点，交换结点p和p的后继结点，注意不要断链即可
+public void swapNext(Node pprev) {
+    Node p = prev.next;
+    Node pnext = p.next;
+    prev.next = pnext;
+    p.next = pnext.next;
+    pnext.next = p;
 
+}
+b. Doubly linked lists.
+public void swapNext(Node p) {
+    Node nextP = p.next;
+    p.prev.next = nextP;
+    p.next = nextP.next
+    nextP.next = p;
+    nextP.prev = p.prev;
+    p.prev = nextP;
+}
 
 3.3 Implement the contains routine for MyLinkedList.
-
-
+public boolean contains(int it) {
+    Node p = first;
+    while (p != null) {
+        if (p.data == it) return true;
+        p = p.next;
+    }
+    return false;
+}
 
 
 3.4 Given two sorted lists, L1 and L2, write a procedure to compute L1 ∩ L2 using only
